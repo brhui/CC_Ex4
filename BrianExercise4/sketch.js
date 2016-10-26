@@ -4,9 +4,12 @@
     q = Make random triangles appear (one vertex tied to mouse location)
     w = Make two circle appear (shapes tied to mouse location)
     e = Makes an array of shapes that rotates and scales around mouseX and (0,0)
+    r = Makes four sets of squares appear that move across the screen               ** NEW IN EXERCISE 4 **
     a = Make a circle and square appear (shapes tied to mouse location)
     s = Makes four triangles appear (one vertex tied to mouse location)
-    d = Makes four squares appear and rotates around (0,0) */
+    d = Makes four squares appear and rotates around (0,0)
+    f = Makes sets of circles and squares appear that "blooms" from the center      ** NEW IN EXERCISE 4 **
+    */
 
 // Square values and speed
 var rectX = -50;
@@ -36,8 +39,18 @@ function setup() {
   strokeWeight(3);
   noCursor();
 
-  sq1 = new rSquare(4, 50, 60, crimson)
-  sq2 = new rSquare(3, 100, 200, ocean)
+  sq1 = new Square(50, 60, crimson);
+  sq2 = new Square(100, 200, ocean);
+  sq3 = new Square(5, 5, emerald);
+  sq4 = new Square(200, 200, lilac);
+  
+  nCirc1 = new NewCircle(random(width), random(height), 35, crimson);
+  nCirc2 = new NewCircle(random(width), random(height), 35, lilac);
+  
+ // nCirc3 = new NewCircle(mouseX, mouseY, mouseX + 1, ocean);
+  
+  nSq1 = new NewSquare(random(width), random(height), 35, emerald);
+  nSq2 = new NewSquare(random(width), random(height), 35, ocean);
 
 }
 
@@ -123,6 +136,7 @@ function draw() {
     push();
     translate(40, 40);
     ellipse(mouseX, mouseY, mouseX + 1, mouseX + 1);
+    // nCirc3.display();
     translate(-100, 20);
     rect(mouseX, mouseY, mouseX + 1, mouseX + 1);
     pop();
@@ -167,6 +181,20 @@ function draw() {
   if (key == 'r' || key == 'R') {
     sq1.display(rectX, 20);
     sq2.display(rectX, 60);
+    sq3.display(rectX, 135);
+    sq4.display(rectX, -60)
+  }
+  
+  if (key == 'f' || key == 'F') {
+    nCirc1.grow();
+    nCirc1.display();
+    nCirc2.grow();
+    nCirc2.display();
+    
+    nSq1.grow();
+    nSq1.display();
+    nSq2.grow();
+    nSq2.display();
   }
 
   // Moving Rectangle from side to side
@@ -199,23 +227,3 @@ function pinwheel(pinX, pinY, pinCol) {
   triangle(x, y, x + 150, y, x + 50, y + 50);
 }
 
-// Class for 'R' Key Press Squares
-function rSquare(n, x, y, c) {
-  this.number = n;
-  this.locX = x;
-  this.locY = y;
-  this.col = c;
-
-  this.display = function(translateX, translateY) {
-    noFill();
-    stroke(this.col);
-    push();
-    translate(translateX + 20, translateY)
-    rect(this.locX + random(30), this.locY + random(30), 45, 45);
-    translate(translateX, translateY);
-    rect(this.locX, this.locY, 45, 45);
-    translate(translateX - 10, translateY - 10);
-    rect(this.locX - random(20), this.locY - random(20), 45, 45);
-    pop();
-  }
-}
