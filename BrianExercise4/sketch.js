@@ -8,7 +8,7 @@
     a = Make a circle and square appear (shapes tied to mouse location)
     s = Makes four triangles appear (one vertex tied to mouse location)
     d = Makes four squares appear and rotates around (0,0)
-    f = Makes sets of circles and squares appear that "blooms" from the center      ** NEW IN EXERCISE 4 **
+    f = Makes sets of circles and squares appear that grow and shrink               ** NEW IN EXERCISE 4 **
     */
 
 // Square values and speed
@@ -185,6 +185,7 @@ function draw() {
     sq4.display(rectX, -60)
   }
   
+  // Pressing the F key draws a pair of circles and a pair of squares randomly on the sketch that grow/shrink
   if (key == 'f' || key == 'F') {
     nCirc1.grow();
     nCirc1.display();
@@ -214,8 +215,6 @@ function draw() {
   if ((rectX > width) || (rectX < -50)) {
     speed *= -1;
   }
-
-
 }
 
 // Function for the pinwheel traigles
@@ -226,4 +225,3 @@ function pinwheel(pinX, pinY, pinCol) {
   fill(pinCol);
   triangle(x, y, x + 150, y, x + 50, y + 50);
 }
-
