@@ -1,3 +1,4 @@
+//Child of NewShape.js
 function NewCircle(x, y, r, c) {
   this.col = c;
   

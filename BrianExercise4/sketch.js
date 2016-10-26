@@ -215,6 +215,8 @@ function draw() {
   if ((rectX > width) || (rectX < -50)) {
     speed *= -1;
   }
+
+
 }
 
 // Function for the pinwheel traigles
@@ -225,3 +227,4 @@ function pinwheel(pinX, pinY, pinCol) {
   fill(pinCol);
   triangle(x, y, x + 150, y, x + 50, y + 50);
 }
+

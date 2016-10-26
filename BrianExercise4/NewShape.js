@@ -1,3 +1,4 @@
+// Parent Class
 function NewShape(x, y, r) {
   this.locX = x;
   this.locY = y;
